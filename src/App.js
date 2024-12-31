@@ -6,12 +6,15 @@ import { useAuth } from "./useAuth";
 import "./App.css";
 
 function App() {
-  const { tasks } = useContext(TaskContext);
+  const { tasks, filteredTasks } = useContext(TaskContext);
   const { isAuthenticated } = useAuth();
+
+  // check for cache hit
+  const taskData = filteredTasks || tasks;
 
   return (
     <div className="App">
-      {isAuthenticated ? <TaskFeed tasks={tasks} /> : <SplashScreen />}
+      {isAuthenticated ? <TaskFeed tasks={taskData} /> : <SplashScreen />}
     </div>
   );
 }

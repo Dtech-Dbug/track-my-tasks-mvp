@@ -1,32 +1,19 @@
-import React, { useState, useContext } from 'react';
-import { PopupComponent } from '../../Components';
-import { TaskContext } from '../../ContextProvider';
-import { TaskCard, Loader, TaskFilter } from '../../Components';
-import './TaskFeed.css';
+import React, { useState, useContext } from "react";
+import { PopupComponent } from "../../Components";
+import { TaskContext } from "../../ContextProvider";
+import { TaskCard, Loader, TaskFilter } from "../../Components";
+import { useTaskFeed } from "./useTaskFeed";
+import "./TaskFeed.css";
 
 export const TaskFeed = ({ tasks }) => {
-  const { loading, setTaskFilter, filteredTasks } = useContext(TaskContext)
-  const [popupOpen, setPopupOpen] = useState(false);
-  const [popupTitle, setPopupTitle] = useState('');
-  const [currentTask, setCurrentTask] = useState(null);
-
-  console.log("tasks in my taskfeed Cmp, ", tasks);
-
-  const openAddTaskPopup = () => {
-    setPopupTitle('Add New Task');
-    setCurrentTask(null);
-    setPopupOpen(true);
-  };
-
-  const openEditTaskPopup = (task) => {
-    setPopupTitle('Edit Task');
-    setCurrentTask(task);
-    setPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setPopupOpen(false);
-  };
+  const { loading, setTaskFilter } = useContext(TaskContext);
+  const {
+    popupOpen,
+    popupTitle,
+    openAddTaskPopup,
+    openEditTaskPopup,
+    closePopup,
+  } = useTaskFeed();
 
   if (loading) {
     return <Loader />;
@@ -42,7 +29,7 @@ export const TaskFeed = ({ tasks }) => {
         {tasks.length > 0 ? (
           <div className="Task-Cards">
             <TaskFilter setTaskFilter={setTaskFilter} />
-            <hr/>
+            <hr />
             {tasks.map((task) => (
               <TaskCard
                 key={task.id}

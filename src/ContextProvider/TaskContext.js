@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 // Create the context
 export const TaskContext = createContext();
@@ -9,6 +9,13 @@ export const TaskProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [theme, setTheme] = useState("light"); // Example: 'light' or 'dark'
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    const cache = localStorage.getItem("tasks");
+    if (cache) {
+      setTasks(JSON.parse(cache));
+    }
+  }, []);
 
   // Add task function
   const addTask = async (newTask) => {
@@ -109,9 +116,9 @@ export const TaskProvider = ({ children }) => {
 
       // Update state to remove the task
       setTasks((prevTasks) => {
-       const newSet = prevTasks.filter((task) => task.id !== id)
-       localStorage.setItem('tasks', JSON.stringify(newSet))
-       return newSet
+        const newSet = prevTasks.filter((task) => task.id !== id);
+        localStorage.setItem("tasks", JSON.stringify(newSet));
+        return newSet;
       });
 
       // Optional: Show a success notification
@@ -134,39 +141,53 @@ export const TaskProvider = ({ children }) => {
   const markTaskAsCompleted = (id) => {
     console.log("markTaskAsCompleted running", id);
 
-    setTasks((prevTasks) =>
-      prevTasks.map(
+    setTasks((prevTasks) => {
+      const updatedTasks = prevTasks.map(
         (task) =>
           task.id === id
-            ? { ...task, status: "completed" } // Toggle the `completed` status
-            : task // Return the task unchanged
-      )
-    );
-  };
+            ? { ...task, status: "completed" } // Update the status
+            : task // Return unchanged
+      );
 
+      // Update localStorage with the new state
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
+      return updatedTasks; // Update the state
+    });
+  };
+  
   const markTaskAsPending = (id) => {
     console.log("markTaskAsPending running", id);
-
-    setTasks((prevTasks) =>
-      prevTasks.map(
-        (task) =>
-          task.id === id
-            ? { ...task, status: "pending" } // Toggle the `completed` status
-            : task // Return the task unchanged
-      )
-    );
+    setTasks((prevTasks) => {
+      const updatedTasks = prevTasks.map((task) =>
+        task.id === id
+          ? { ...task, status: "pending" } // Update the status
+          : task // Return unchanged
+      );
+  
+      // Update localStorage with the new state
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  
+      return updatedTasks; // Update the state
+    });
   };
-
+  
   // Function to set the filter state
   const setTaskFilter = (status) => {
     setFilter(status);
   };
 
   // Filtered tasks based on the selected filter
-const filteredTasks = tasks.filter((task) => {
-  if (filter === "all") return true; // Show all tasks
-  return task.status === filter; // Show tasks matching the selected status
-});
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "all") return true; // Show all tasks
+    return task.status === filter; // Show tasks matching the selected status
+  });
+
+  // useEffect(() => {
+  //   localStorage.setItem("tasks", JSON.stringify(tasks));
+  // }, [tasks]);
+
+  console.log("filteredTasks", filteredTasks);
 
   return (
     <TaskContext.Provider
@@ -182,7 +203,7 @@ const filteredTasks = tasks.filter((task) => {
         setLoading,
         filteredTasks,
         setTaskFilter,
-        markTaskAsPending
+        markTaskAsPending,
       }}
     >
       {children}
