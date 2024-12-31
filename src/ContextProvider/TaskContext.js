@@ -144,6 +144,19 @@ export const TaskProvider = ({ children }) => {
     );
   };
 
+  const markTaskAsPending = (id) => {
+    console.log("markTaskAsPending running", id);
+
+    setTasks((prevTasks) =>
+      prevTasks.map(
+        (task) =>
+          task.id === id
+            ? { ...task, status: "pending" } // Toggle the `completed` status
+            : task // Return the task unchanged
+      )
+    );
+  };
+
   // Function to set the filter state
   const setTaskFilter = (status) => {
     setFilter(status);
@@ -168,7 +181,8 @@ const filteredTasks = tasks.filter((task) => {
         loading,
         setLoading,
         filteredTasks,
-        setTaskFilter
+        setTaskFilter,
+        markTaskAsPending
       }}
     >
       {children}

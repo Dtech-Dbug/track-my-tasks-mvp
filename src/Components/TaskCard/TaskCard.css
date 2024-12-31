@@ -101,3 +101,11 @@
   background: #d4edda;
   color: #155724;
 }
+
+.Task-Status.completed-status {
+  color: green; /* Green for completed tasks */
+}
+
+.Task-Status.pending-status {
+  color: red; /* Red for pending tasks */
+}
