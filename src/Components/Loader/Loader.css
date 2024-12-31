@@ -1,0 +1,43 @@
+.Loader-Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.Loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Spinner {
+  border: 4px solid transparent;
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+.Loader p {
+  color: #ffffff;
+  font-size: 16px;
+  margin: 0;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

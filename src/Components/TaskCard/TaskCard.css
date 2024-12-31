@@ -1,0 +1,103 @@
+.Task-Card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.Task-Card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Task-Card.completed {
+  opacity: 0.7;
+  text-decoration: line-through;
+}
+
+.Task-Card-Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Task-Title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: black;
+}
+
+.Task-Severity {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.Task-Severity.low {
+  background: #d4edda;
+  color: #155724;
+}
+
+.Task-Severity.medium {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.Task-Severity.high {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.Task-Description {
+  font-size: 0.95rem;
+  color: #555555;
+  margin: 0;
+}
+
+.Task-Deadline {
+  font-size: 0.85rem;
+  color: #888888;
+  margin: 0;
+}
+
+.Task-Card-Actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.Task-Edit-Button,
+.Task-Delete-Button,
+.Task-Complete-Button {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.Task-Edit-Button:hover {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.Task-Delete-Button:hover {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.Task-Complete-Button:hover {
+  background: #d4edda;
+  color: #155724;
+}

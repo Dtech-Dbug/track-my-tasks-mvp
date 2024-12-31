@@ -1,0 +1,106 @@
+/* Task Feed Container */
+.Task-Feed-Container {
+  width: 100%; /* Full width */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e; /* Slightly lighter black */
+}
+
+/* Header */
+.Task-Feed-Header {
+  background-color: #333; /* Dark header background */
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #444; /* Subtle division */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.Task-Feed-Header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #ffffff; /* White for high contrast */
+}
+
+/* Feed Content */
+.Task-Feed-Content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center content vertically */
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling if content overflows */
+}
+
+/* No Tasks Message */
+.No-Tasks {
+  color: #888; /* Greyed-out message */
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Task List */
+.Task-List {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 800px; /* Optional: limit task list width for readability */
+  margin: 0 auto;
+}
+
+.Task-Item {
+  background-color: #2a2a2a; /* Dark card background */
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.Task-Item:hover {
+  background-color: #3b3b3b; /* Slightly lighter on hover */
+}
+
+.Task-Item.completed {
+  text-decoration: line-through;
+  color: #888; /* Greyed-out completed tasks */
+}
+
+/* BUTTON  */
+/* Add Task Button */
+.Add-Task-Button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #2a2a2a; /* Matches the dark theme */
+  color: #ffffff; /* White text for contrast */
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.Add-Task-Button:hover {
+  background-color: #3b3b3b; /* Slightly lighter on hover */
+}
+
+.Add-Task-Button:active {
+  transform: scale(0.9); /* Slight press effect */
+}
+
+.Add-Task-Button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0px 0px 8px 2px #ffffff; /* Add a focus ring for accessibility */
+}
