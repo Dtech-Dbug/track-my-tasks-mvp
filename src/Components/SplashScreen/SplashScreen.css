@@ -1,0 +1,95 @@
+/* General container styles */
+.Splash-Screen-Container {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e1e1e; /* Slightly lighter black */
+  color: white;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+}
+
+.Splash-Screen-Container header {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.Splash-Screen-Container hr {
+  margin-top: 10px;
+  width: 60%;
+  border: 1px solid #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Form-Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Auth-Form {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  border-radius: 15px;
+  padding: 30px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.Input-Field {
+  padding: 12px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.Input-Field::placeholder {
+  color: #aaa;
+}
+
+.Input-Field:focus {
+  outline: none;
+  border-color: #ff7f50; /* Highlight the border when focused */
+  background-color: #444;
+}
+
+.CTA-Button {
+  background-color: #ff7f50; /* Elegant coral color */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 6px 15px rgba(255, 127, 80, 0.4);
+  outline: none;
+}
+
+.CTA-Button:hover {
+  background-color: #ff6347; /* Slightly darker coral */
+  transform: translateY(-5px); /* Slight elevation effect */
+  box-shadow: 0px 10px 20px rgba(255, 127, 80, 0.5);
+}
+
+.CTA-Button:focus {
+  border: 2px solid #fff; /* Highlight border when focused */
+}
+
+.CTA-Button:active {
+  background-color: #e55347; /* Even darker on click */
+  transform: translateY(0); /* Button presses down when clicked */
+}

@@ -37,7 +37,7 @@ export const TaskProvider = ({ children }) => {
       // Simulate a unique ID and add other necessary properties
       const taskWithId = {
         ...newTask,
-        id: responseData.id || Math.floor(Math.random() * 10000), // Use API ID or fallback to a random ID
+        id: Math.floor(Math.random() * 10000), // Use API ID or fallback to a random ID
         status: "pending", // Default status
       };
 
@@ -108,7 +108,11 @@ export const TaskProvider = ({ children }) => {
       console.log(`Task with ID ${id} deleted successfully.`);
 
       // Update state to remove the task
-      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+      setTasks((prevTasks) => {
+       const newSet = prevTasks.filter((task) => task.id !== id)
+       localStorage.setItem('tasks', JSON.stringify(newSet))
+       return newSet
+      });
 
       // Optional: Show a success notification
       toast.error("Task deleted successfully!");
