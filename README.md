@@ -12,3 +12,6 @@ PassCode : `1111`
 - please find the hosted app link here : https://gleeful-macaron-f4ac00.netlify.app/
 
 ## Preview
+
+https://github.com/user-attachments/assets/dbcece8b-b4f7-4c83-a4b6-8c97fd449214
+
