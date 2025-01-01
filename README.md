@@ -7,4 +7,8 @@ please use the following creds to get in, any other strings combination will be 
 Email : `john@doe`
 PassCode : `1111`
 
+## Links 
+- please find the `brief.md` file for the challenges
+- please find the hosted app link here : https://gleeful-macaron-f4ac00.netlify.app/
+
 ## Preview
