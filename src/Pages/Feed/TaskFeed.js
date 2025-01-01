@@ -13,6 +13,7 @@ export const TaskFeed = ({ tasks }) => {
     openAddTaskPopup,
     openEditTaskPopup,
     closePopup,
+    handleLogout
   } = useTaskFeed();
 
   if (loading) {
@@ -45,6 +46,10 @@ export const TaskFeed = ({ tasks }) => {
       </main>
       <button className="Add-Task-Button" onClick={openAddTaskPopup}>
         +
+      </button>
+
+      <button className="Logout-Button" onClick={handleLogout}>
+        Logout
       </button>
 
       {/* POPUP  */}

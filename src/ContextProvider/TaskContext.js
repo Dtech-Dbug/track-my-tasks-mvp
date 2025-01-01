@@ -9,6 +9,7 @@ export const TaskProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [theme, setTheme] = useState("light"); // Example: 'light' or 'dark'
   const [filter, setFilter] = useState("all");
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const cache = localStorage.getItem("tasks");
@@ -155,23 +156,24 @@ export const TaskProvider = ({ children }) => {
       return updatedTasks; // Update the state
     });
   };
-  
+
   const markTaskAsPending = (id) => {
     console.log("markTaskAsPending running", id);
     setTasks((prevTasks) => {
-      const updatedTasks = prevTasks.map((task) =>
-        task.id === id
-          ? { ...task, status: "pending" } // Update the status
-          : task // Return unchanged
+      const updatedTasks = prevTasks.map(
+        (task) =>
+          task.id === id
+            ? { ...task, status: "pending" } // Update the status
+            : task // Return unchanged
       );
-  
+
       // Update localStorage with the new state
       localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  
+
       return updatedTasks; // Update the state
     });
   };
-  
+
   // Function to set the filter state
   const setTaskFilter = (status) => {
     setFilter(status);
@@ -204,6 +206,8 @@ export const TaskProvider = ({ children }) => {
         filteredTasks,
         setTaskFilter,
         markTaskAsPending,
+        token,
+        setToken,
       }}
     >
       {children}

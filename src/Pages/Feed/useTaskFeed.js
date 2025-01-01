@@ -20,6 +20,11 @@ export const useTaskFeed = () => {
     setPopupOpen(false);
   };
 
+  const handleLogout = () => {
+    // logout user, del auth token 
+    localStorage.removeItem('authToken')
+  }
+
   return {
     popupOpen,
     setPopupOpen,
